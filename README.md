@@ -1,103 +1,36 @@
-# &lt;x-business-card&gt;
+# エンタープライヤーのためのWeb Components Study
+~Web ComponentsでWeb名刺を作ろう！~
 
-> A bare minimum custom element starter-kit using [VanillaJS](http://vanilla-js.com/).
->
-> Like [Yeoman](http://yeoman.io/)? Use the [generator-element](https://www.npmjs.org/package/generator-element) instead.
->
-> Looking for a working example? Check [hello-world-element](https://github.com/webcomponents/hello-world-element).
+## はじめに
 
-## Demo
+この資料はWeb名刺を作成するハンズオンを通じて、Web標準の「Web Components」学習するための資料です。Polymerの学習ではありませんのでご注意ください。  
+(なお、資料の内容は2014年9月現在のWeb Componentsの仕様に基づくものです。)
 
-[Check it live!](http://mitsuruog.github.io/x-business-card)
+## ゴール
+Web Componentsの基本を把握し、様々なWeb Componentsのサンプルを見ながら、オリジナルのWeb Componentsを作れるようになるまでをゴールとしています。
 
-## Install
+## 前提となるもの
 
-Install the component using [Bower](http://bower.io/):
+* 学習を進めるにあたり、ローカルにWebサーバを立てる必要があります、資料の中では[grunt-contrib-connect](https://github.com/gruntjs/grunt-contrib-connect)を使って簡易Webサーバが起動するようにしてあるため、[Node](http://nodejs.org/download/)と[Grunt](http://gruntjs.com/getting-started)の実行環境が必要です。
+* GitとChromeがインストールされていることを強く推奨します。
+* Githubアカウントがあると配布がスムーズに行えて尚良です。
+* フロントエンド開発が初めての方、開発環境構築が面倒な方は、ブラウザ上で簡単にフロントエンド開発ができる[Cloud9](https://c9.io/)のアカウントを作成して、これを利用してください。
 
-```sh
-$ bower install x-business-card --save
-```
+## 目次
 
-Or [download as ZIP](https://github.com/mitsuruog/x-business-card/archive/master.zip).
+1. [準備](./001_pre)
+2. [Web ComponentsでHello World](./002_hello_world)
+3. [Web名刺を作成](./003_create_card)
+4. [Web名刺をデコレーション](./004.decoration)
+5. [配布(名刺交換)](./005_exchange)
 
-## Usage
+## 脚注
 
-1. Import Web Components' polyfill:
+> 文中での :gift_heart: は技術的な細かい内容について書いています。ハンズオンでは取り扱いません。 
 
-    ```html
-    <script src="bower_components/platform/platform.js"></script>
-    ```
+## 作者
+[mitsuruog](https://github.com/mitsuruog)
 
-2. Import Custom Element:
+後援：[html5jエンタープライズ部](http://www.html5biz.org/)
 
-    ```html
-    <link rel="import" href="bower_components/x-business-card/src/my-element.html">
-    ```
 
-3. Start using it!
-
-    ```html
-    <my-element></my-element>
-    ```
-
-## Options
-
-Attribute     | Options     | Default      | Description
----           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | Lorem ipsum dolor.
-
-## Methods
-
-Method        | Parameters   | Returns     | Description
----           | ---          | ---         | ---
-`unicorn()`   | None.        | Nothing.    | Magic stuff appears.
-
-## Events
-
-Event         | Description
----           | ---
-`onsomething` | Triggers when something happens.
-
-## Development
-
-In order to run it locally you'll need to fetch some dependencies and a basic server setup.
-
-* Install [Bower](http://bower.io/) & [Grunt](http://gruntjs.com/):
-
-    ```sh
-    $ [sudo] npm install -g bower grunt-cli
-    ```
-
-* Install local dependencies:
-
-    ```sh
-    $ bower install && npm install
-    ```
-
-* To test your project, start the development server and open `http://localhost:8000`.
-
-    ```sh
-    $ grunt server
-    ```
-
-* To provide a live demo, send everything to `gh-pages` branch.
-
-    ```sh
-    $ grunt deploy
-    ```
-
-## Contributing
-
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
-
-## History
-
-For detailed changelog, check [Releases](https://github.com/mitsuruog/x-business-card/releases).
-
-## License
-
-[MIT License](http://opensource.org/licenses/MIT)

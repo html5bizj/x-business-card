@@ -1,0 +1,41 @@
+<template>
+
+  <style>
+    .name {
+      color: blue;
+      font-weight: bold;
+    }
+  </style>
+
+  <p>Hello world. <span class="name">yourename</span></p>
+</template>
+
+<script>
+(function(window, document) {
+  
+  // HTMLElementを継承します
+  var elementProto = Object.create(HTMLElement.prototype);
+
+  // Components側のdocument
+  var doc = document.currentScript.ownerDocument;
+
+  // template
+  var template = doc.querySelector('template').content;
+
+  // インスタンス化した場合の処理
+  elementProto.createdCallback = function() {
+    // templateをDeepcloneします。
+    var shadowDom = template.cloneNode(true);
+    
+    // ShadowRootを作成して、その配下にNodeを追加します。
+    var shadowRoot = this.createShadowRoot();
+    shadowRoot.appendChild(shadowDom);
+  };
+
+  // カスタム要素を登録
+  document.registerElement('x-mitsuruog', {
+    prototype: elementProto
+  });
+
+})(window, document);
+</script>

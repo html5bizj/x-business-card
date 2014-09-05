@@ -1,0 +1,192 @@
+<template>
+
+  <style>
+    :host {
+      display: inline-block;
+    }
+    
+    /* module
+    ================================== */
+    .me {
+        font-family: 'Helvetica', Arial, sans-serif;
+        font-weight: 100;
+    
+        position: relative;
+    
+        display: inline-block;
+        overflow: hidden;
+    
+        width: 265px;
+        height: 300px;
+    
+        text-align: center;
+    
+        color: #fff;
+        border-radius: 6px;
+        background-color: #2e353c;
+    }
+    .me dt {
+      display: none;
+    }
+    .me dd,
+    .me dl {
+      margin: 0;
+    }
+    
+    /* sub module
+    ================================== */
+    .me-profile {
+        height: 85px;
+    
+        border: 1px solid #d5d5d5;
+        border-bottom: 0;
+        background: #fff;
+    }
+    
+    dd.me-image {
+        display: inline-block;
+    
+        margin: 20px 0 10px;
+    }
+    .me-image img {
+        width: 120px;
+        height: 120px;
+    
+        vertical-align: middle;
+    
+        border: 3px solid #d5d5d5;
+        border-radius: 100%;
+        background: #fff;
+    }
+    
+    .me-name {
+        font-size: 24px;
+    }
+    
+    .me-contact {
+        position: relative;
+        top: 19px;
+    
+        padding: 10px;
+    
+        color: #999;
+        border-top: 1px solid #999;
+    }
+    a.me-contact-url {
+        text-decoration: none;
+    }
+    
+    /* thema
+    ================================== */
+    :host(.enpura) .me {
+        color: #eef1fd;
+        background-color: #1d2654;
+    }
+    
+    :host(.enpura) .me-profile {
+        border: 1px solid #d8dbe7;
+        background: #fff;
+    }
+    
+    :host(.enpura) .me-image img {
+        border: 3px solid #d8dbe7;
+    }
+    
+    :host(.enpura) .me-title,
+    :host(.enpura) .me-company,
+    :host(.enpura) .me-contact {
+        color: #7782bf;
+    }
+    
+    :host(.enpura) .me-contact {
+        border-top: 1px solid #7782bf;
+    }
+    
+    /* animation
+    ================================== */
+    :host(:active) {
+      position: relative;
+      top: 7px;
+      left: 7px;
+    }
+
+  </style>
+
+  <article class="me">
+    <dl class="me-profile">
+    
+      <dt>画像</dt>
+      <dd class="me-image">
+        <img src=""></img>
+      </dd>
+
+      <dt>所属</dt>
+      <dd class="me-company"></dd>
+
+      <dt>名前</dt>
+      <dd class="me-name"></dd>
+
+      <dt>肩書き</dt>
+      <dd class="me-title"></dd>
+
+      <dt>コンタクト</dt>
+      <a href="" class="me-contact-url">
+        <dd class="me-contact"></dd>
+      </a>
+      
+    </dl>
+  </article>
+  
+</template>
+
+<script>
+(function(window, document) {
+  
+  // HTMLElementを継承します
+  var elementProto = Object.create(HTMLElement.prototype);
+
+  // Components側のdocument
+  var doc = document.currentScript.ownerDocument;
+
+  // template
+  var template = doc.querySelector('template').content;
+  
+  // あなたのプロフィール
+  var me = {
+    img: "https://avatars1.githubusercontent.com/u/4105415",
+    name: "えんぷら部",
+    company: "html5jエンタープライズ部",
+    title: "オープンコミュニティ",
+    contact: "#html5biz",
+    contactUrl: "http://www.html5biz.org/"
+  };
+
+  // インスタンス化した場合の処理
+  elementProto.createdCallback = function() {
+    // templateをDeepcloneします。
+    var shadowDom = template.cloneNode(true);
+    
+    // ShadowRootを作成して、その配下にNodeを追加します。
+    var shadowRoot = this.createShadowRoot();
+    shadowRoot.appendChild(shadowDom);
+  };
+
+  // elementがdocumentに追加された場合の処理
+  elementProto.attachedCallback = function() {
+    // ShadowDOM化した内部から所定の要素を検索してプロフィールを設定する。
+    var shadowRoot = this.shadowRoot;
+    shadowRoot.querySelector('.me-image img').src = me.img;
+    shadowRoot.querySelector('.me-name').textContent = me.name;
+    shadowRoot.querySelector('.me-company').textContent = me.company;
+    shadowRoot.querySelector('.me-title').textContent = me.title;
+    shadowRoot.querySelector('.me-contact').textContent = me.contact;
+    shadowRoot.querySelector('.me-contact-url').href = me.contactUrl;
+  };
+  
+  // カスタム要素を登録
+  document.registerElement('x-yourname', {
+    prototype: elementProto
+  });
+  
+})(window, document);
+</script>

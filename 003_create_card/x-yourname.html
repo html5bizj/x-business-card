@@ -1,0 +1,83 @@
+<template>
+
+  <style>
+  </style>
+
+  <article class="me">
+    <dl class="me-profile">
+    
+      <dt>画像</dt>
+      <dd class="me-image">
+        <img src=""></img>
+      </dd>
+
+      <dt>所属</dt>
+      <dd class="me-company"></dd>
+
+      <dt>名前</dt>
+      <dd class="me-name"></dd>
+
+      <dt>肩書き</dt>
+      <dd class="me-title"></dd>
+
+      <dt>コンタクト</dt>
+      <a href="" class="me-contact-url">
+        <dd class="me-contact"></dd>
+      </a>
+      
+    </dl>
+  </article>
+  
+</template>
+
+<script>
+(function(window, document) {
+  
+  // HTMLElementを継承します
+  var elementProto = Object.create(HTMLElement.prototype);
+
+  // Components側のdocument
+  var doc = document.currentScript.ownerDocument;
+
+  // template
+  var template = doc.querySelector('template').content;
+  
+  // あなたのプロフィール
+  var me = {
+    img: "https://avatars1.githubusercontent.com/u/4105415",
+    name: "えんぷら部",
+    company: "html5jエンタープライズ部",
+    title: "オープンコミュニティ",
+    contact: "#html5biz",
+    contactUrl: "http://www.html5biz.org/"
+  };
+
+  // インスタンス化した場合の処理
+  elementProto.createdCallback = function() {
+    // templateをDeepcloneします。
+    var shadowDom = template.cloneNode(true);
+    
+    // ShadowRootを作成して、その配下にNodeを追加します。
+    var shadowRoot = this.createShadowRoot();
+    shadowRoot.appendChild(shadowDom);
+  };
+
+  // elementがdocumentに追加された場合の処理
+  elementProto.attachedCallback = function() {
+    // ShadowDOM化した内部から所定の要素を検索してプロフィールを設定する。
+    var shadowRoot = this.shadowRoot;
+    shadowRoot.querySelector('.me-image img').src = me.img;
+    shadowRoot.querySelector('.me-name').textContent = me.name;
+    shadowRoot.querySelector('.me-company').textContent = me.company;
+    shadowRoot.querySelector('.me-title').textContent = me.title;
+    shadowRoot.querySelector('.me-contact').textContent = me.contact;
+    shadowRoot.querySelector('.me-contact-url').href = me.contactUrl;
+  };
+  
+  // カスタム要素を登録
+  document.registerElement('x-yourname', {
+    prototype: elementProto
+  });
+
+})(window, document);
+</script>
