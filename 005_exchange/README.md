@@ -76,6 +76,9 @@ Googleが提供するWeb Componentsのスタイルガイド
 Web Componentsのboilerplate  
 [webcomponents/hello-world-element](https://github.com/webcomponents/hello-world-element)
 
+Web Components Best Practices  
+[Web Components Best Practices](http://webcomponents.org/articles/web-components-best-practices/)
+
 それでは、これから始まるWeb Components時代をenjoyしてください！  
 ではではー。:beers:
 
