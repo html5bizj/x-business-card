@@ -16,7 +16,7 @@ module.exports = function(grunt) {
             src: [
                 'bower_components/**/*',
                 '!bower_components/x-business-card/**/*',
-                'demo/*', 'src/*', 'index.html'
+                'demo/*', 'src/*', '*.html'
             ]
         }
     });
