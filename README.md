@@ -20,6 +20,10 @@ Web Componentsの基本を把握し、様々なWeb Componentsのサンプルを�
 
 <http://html5bizj.github.io/x-business-card>
 
+### 発表スライド
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/38850199" width="427" height="356" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/mitsuruogawa33/webcompoents" title="エンタープライヤーのためのWeb Componentsハンズオン" target="_blank">エンタープライヤーのためのWeb Componentsハンズオン</a> </strong> from <strong><a href="http://www.slideshare.net/mitsuruogawa33" target="_blank">Mitsuru Ogawa</a></strong> </div>
+
 ## 目次
 
 1. [準備](./001_pre)
